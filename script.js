@@ -84,3 +84,31 @@ const items = [
     img: "./img/12.jpeg",
   },
 ];
+
+const product = {};
+
+const title = document.querySelector("h1");
+// Заголовок
+const description = document.querySelector("p");
+//Описание
+const img = document.querySelector("img");
+//Картинка
+const price = document.querySelector(".price span");
+//Цены
+const tags = document.querySelector('.tags');
+//Контейнер
+const objImg = document.querySelector(`#shop-items`);
+
+
+function createNewProduct(title, description, img, price, tags) {
+  const template = document.querySelector(`id="item-template"`);
+  const newProduct = template.content.cloneNode(true);
+  newForeCast.querySelector("h1").textContent = title;
+  newForeCast.querySelector("p").textContent = description;
+  newForeCast.querySelector("img").textContent = img;
+  newForeCast.querySelector(".price span").textContent = price;
+  newForeCast.querySelector('div class="tags"').textContent = tags;
+  titleContainer.append(newProduct);
+}
+
+createNewProduct(title.textContent, description.textContent, img.textContent, price.textContent, tags.textContent );
