@@ -117,13 +117,21 @@ const tags = document.querySelector('.tags');
 const objImg = document.querySelector(`#shop-items`);
 
 
-function createNewProduct(title, description, img, price, tags) {
-  const newProduct = itemTemplate.content.cloneNode(true);
-  newProduct.querySelector("h1").textContent = title;
-  newProduct.querySelector("p").textContent = description;
-  newProduct.querySelector("img").src = img;
-  newProduct.querySelector(".price").textContent = `${price}P`;
-  newProduct.querySelector('.tags').textContent = tags;
+function createNewProduct(newProduct) {
+  const { title, description, img, price, tags } = newProduct;
+  const product = itemTemplate.content.cloneNode(true);
+  product.querySelector("h1").textContent = title;
+  product.querySelector("p").textContent = description;
+  product.querySelector("img").src = img;
+  product.querySelector(".price").textContent = `${price}P`;
+  product.querySelector('.tags').textContent = tags;
+
+  return product;
 }
 
-
+function renderItems(arr) {
+  arr.forEach((product) => {
+    itemsContainer.append(createNewProduct(product));
+  });
+}
+renderItems(currentState);
