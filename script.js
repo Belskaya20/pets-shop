@@ -5,6 +5,7 @@ const items = [
     tags: ["cat", "dog"],
     price: 500,
     img: "./img/1.jpeg",
+    rating: 4.4,
   },
   {
     title: "Игрушка лабиринт",
@@ -12,6 +13,7 @@ const items = [
     tags: ["cat", "dog"],
     price: 900,
     img: "./img/2.jpeg",
+    rating: 3.1,
   },
   {
     title: "Игрушка для котят",
@@ -19,6 +21,7 @@ const items = [
     tags: ["cat"],
     price: 300,
     img: "./img/3.jpeg",
+    rating: 5.0,
   },
   {
     title: "Миска «Котик»",
@@ -26,6 +29,7 @@ const items = [
     tags: ["cat", "dog"],
     price: 660,
     img: "./img/4.jpeg",
+    rating: 4.7,
   },
   {
     title: "Лоток розовый",
@@ -33,6 +37,7 @@ const items = [
     tags: ["cat"],
     price: 400,
     img: "./img/5.jpeg",
+    rating: 4.9,
   },
   {
     title: "Сухой корм для кошек",
@@ -40,6 +45,7 @@ const items = [
     tags: ["cat"],
     price: 200,
     img: "./img/6.jpeg",
+    rating: 3.2,
   },
   {
     title: "Сухой корм для собак",
@@ -47,6 +53,7 @@ const items = [
     tags: ["dog"],
     price: 300,
     img: "./img/7.jpeg",
+    rating: 2.9,
   },
   {
     title: "Игрушка для собак",
@@ -54,6 +61,7 @@ const items = [
     tags: ["dog"],
     price: 500,
     img: "./img/8.jpeg",
+    rating: 3.4,
   },
   {
     title: "Лежанка",
@@ -61,6 +69,7 @@ const items = [
     tags: ["cat", "dog"],
     price: 1500,
     img: "./img/9.jpeg",
+    rating: 4.8,
   },
   {
     title: "Поилка для собак",
@@ -68,6 +77,7 @@ const items = [
     tags: ["dog"],
     price: 800,
     img: "./img/10.jpeg",
+    rating: 3.2,
   },
   {
     title: "Переноска",
@@ -75,6 +85,7 @@ const items = [
     tags: ["cat", "dog"],
     price: 3500,
     img: "./img/11.jpeg",
+    rating: 3.7,
   },
   {
     title: "Поводок для собак",
@@ -82,5 +93,57 @@ const items = [
     tags: ["dog"],
     price: 800,
     img: "./img/12.jpeg",
+    rating: 4.1,
   },
 ];
+
+let currentState = [...items];
+
+// Переменная с контейнером для товаров
+const itemsContainer = document.querySelector("#shop-items");
+// Шаблон для товара
+const itemTemplate = document.querySelector("#item-template");
+
+const title = document.querySelector("h1");
+// Заголовок
+const description = document.querySelector("p");
+//Описание
+const img = document.querySelector("img");
+//Картинка
+const price = document.querySelector(".price span");
+//Цены
+const tags = document.querySelector('.tags');
+//Контейнер
+const objImg = document.querySelector(`#shop-items`);
+
+
+function createNewProduct(newProduct) {
+  const { title, description, img, price, tags } = newProduct;
+  const product = itemTemplate.content.cloneNode(true);
+  product.querySelector("h1").textContent = title;
+  product.querySelector("p").textContent = description;
+  product.querySelector("img").src = img;
+  product.querySelector(".price").textContent = `${price}P`;
+  product.querySelector('.tags').textContent = tags;
+
+  return product;
+}
+
+function renderItems(arr) {
+  arr.forEach((product) => {
+    itemsContainer.append(createNewProduct(product));
+  });
+}
+
+function createTags(tags) {
+  const tagsHolder = document.querySelector(".tags");
+  tags.forEach((tag) => {
+    const element = document.createElement("span");
+    element.textContent = tag;
+    element.classList.add("tag");
+    tagsHolder.append(element);
+  });
+  return item;
+}
+
+renderItems(currentState);
