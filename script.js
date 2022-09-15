@@ -134,4 +134,16 @@ function renderItems(arr) {
     itemsContainer.append(createNewProduct(product));
   });
 }
+
+function createTags(tags) {
+  const tagsHolder = document.querySelector(".tags");
+  tags.forEach((tag) => {
+    const element = document.createElement("span");
+    element.textContent = tag;
+    element.classList.add("tag");
+    tagsHolder.append(element);
+  });
+  return item;
+}
+
 renderItems(currentState);
